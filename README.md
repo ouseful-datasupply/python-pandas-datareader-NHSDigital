@@ -22,7 +22,7 @@ ods.search(string='', field='Label')
 #Search for Label containing GP
 ods.search(string='GP', field='Label', case=True)
 
-#Search for datsets with a code containing 'cur'
+#Search for datasets with a code containing 'cur'
 ods.search(string='cur', field='Dataset')
 
 #Search for datasets released as 'gp-data'
@@ -42,7 +42,7 @@ dd.keys()
 >>> dict_keys(['eccg', 'eccgsite', 'etrust', 'ecare'])
 #dd[key] returns a dataframe
 
-dd=download('ecarehomesucc')
+dd=ods.download('ecarehomesucc')
 >>> dd is a dataframe
 
 dd=ods.download(['ecarehomesucc','epraccur'])
@@ -50,3 +50,5 @@ dd=ods.download(['ecarehomesucc','epraccur'])
 dd['epraccur']
 >>> dd['epraccur'] is a dataframe
 ```
+
+The downloader should be cacheing data as it is downloaded, which can add a considerable overhead. At the moment, the downloaded data is *not* persisted using local storage. 
