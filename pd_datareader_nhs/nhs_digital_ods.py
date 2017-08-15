@@ -2,11 +2,14 @@
 
 import warnings
 
+import sqlite3
+
 import pandas as pd
 import numpy as np
 
 from pandas_datareader.base import _BaseReader
 from pandas.compat import string_types
+from pandas import read_sql_query, DataFrame, read_csv
 
 import requests
 import lxml.html
@@ -56,7 +59,7 @@ class NHSDigitalOrganisationDataServiceReader(_BaseReader):
     ``pandas`` DataFrame.
     """
     
-    def __init__(self, datasets=None, datatypes=None, errors='warn'):
+    def __init__(self, datasets=None, datatypes=None, sqlite3db=None, errors='warn'):
         
         if datasets is None and datatypes is None:
             datatypes = datatype_codes
@@ -89,43 +92,75 @@ class NHSDigitalOrganisationDataServiceReader(_BaseReader):
         self.datasets = datasets
         self.datatypes = datatypes
         self.errors = errors
-
-    def get_datasets(self):
-        """Download information about all NHS Digital Organisation Data Service datasets"""
+        
+        self._setdb(sqlite3db)
+        
+        if not isinstance(_cached_dataset_lookups, DataFrame):
+            self._sourceDatasets(False)
+        
+    def init(self):
+        pass
+    
+    def _setdb(self,name='default.sqlite'):
+        global _dbcon
+        if isinstance(name, string_types):
+            if _dbcon is None: _dbcon = sqlite3.connect(name) 
+        self.sqlite3con =_dbcon
+        if self.sqlite3con and not self._dbtable_exists('dataset_date'):
+            print("Setting up a new dataset_date table...")
+            DataFrame({'Dataset':dataset_codes,'Date':None}).to_sql(con=self.sqlite3con, name="dataset_date",index=False)
+            if isinstance(_cached_dataset_lookups, DataFrame):
+                self._updatedb('_cached_dataset_lookups', _cached_dataset_lookups)
+            for key in _cached_datasets:
+                self._updatedb(key, _cached_datasets[key])   
+    
+    def _sourceDatasets(self,retval=True):
         global _cached_dataset_lookups
-        
-        if isinstance(_cached_dataset_lookups, pd.DataFrame):
-            return _cached_dataset_lookups.copy()
-        
+            
         lookupURLs=["https://digital.nhs.uk/organisation-data-service/data-downloads/gp-data",
              "https://digital.nhs.uk/organisation-data-service/data-downloads/other-nhs",
              "https://digital.nhs.uk/organisation-data-service/data-downloads/health-authorities",
              "https://digital.nhs.uk/organisation-data-service/data-downloads/non-nhs",
              "https://digital.nhs.uk/organisation-data-service/data-downloads/miscellaneous"]
            
-        data = pd.DataFrame()
+        data = DataFrame()
 
         for url in lookupURLs:
-            txt=requests.get(url).text
-            table = lxml.html.fromstring(txt)
+            # TO DO - should really handle exception better here, eg if there is no connection?
+            try:
+                txt=requests.get(url).text                    
+                table = lxml.html.fromstring(txt)
 
-            for row in table.xpath('//tr')[1:]:
-                cells=row.xpath('td')
-                if cells[1] is not None:
-                    dataURL=cells[1].xpath('a/@href')[0]
-                    data=pd.concat([data, pd.DataFrame([{'Label':cells[0].text,
-                                                         'Date':cells[2].text,
-                                                         'Period':cells[3].text,
-                                                         'Dataset':dataURL.split('/')[-3],
-                                                         'URL':dataURL,
-                                                         'Type':url.split('/')[-1]}])])
-
-        data = data.reset_index(drop=True)
+                for row in table.xpath('//tr')[1:]:
+                    cells=row.xpath('td')
+                    if cells[1] is not None:
+                        dataURL=cells[1].xpath('a/@href')[0]
+                        data=pd.concat([data, DataFrame([{'Label':cells[0].text,
+                                                             'Date':cells[2].text,
+                                                             'Period':cells[3].text,
+                                                             'Dataset':dataURL.split('/')[-3],
+                                                             'URL':dataURL,
+                                                             'Type':url.split('/')[-1]}])])
+                data = data.reset_index(drop=True)
+            except:
+                if self._dbtable_exists('_cached_dataset_lookups'):
+                    data = self.read_db(table = '_cached_dataset_lookups')
+                else: warnings.warn("Couldn't scrape ODS data listing: {}".format(url))
         
         # cache
         _cached_dataset_lookups = data.copy()
+        if self.sqlite3con and not self._dbtable_exists('_cached_dataset_lookups'):
+            self._updatedb('_cached_dataset_lookups', _cached_dataset_lookups)
+        if not retval: return
         return data
 
+    def get_datasets(self):
+        """Download information about all NHS Digital Organisation Data Service datasets"""
+        
+        if isinstance(_cached_dataset_lookups, DataFrame):
+            return _cached_dataset_lookups.copy()
+        return self._sourceDatasets()
+        
     def search(self, string='GP', field='Dataset', case=False):
         """
         Search available datasets from NHS Digital Organisation Data Service
@@ -173,6 +208,47 @@ class NHSDigitalOrganisationDataServiceReader(_BaseReader):
     def zipfilelist(self, z):
         ''' Return the names of files contained in a grabbed zip file '''
         return z.namelist()
+           
+    def read_db(self, q=None, table=None):
+        return self._read_db(q, table)
+    
+    def _read_db(self, q=None, table=None):
+        #Note that the db can be stale - should check against recently loaded _cached_dataset_lookups?
+        if not self.sqlite3con: return DataFrame()
+        if q is None and table is None:
+            q="SELECT name FROM sqlite_master WHERE type='table'"
+        elif q is None:
+            q="SELECT * FROM {tbl}".format(tbl=table)
+        return read_sql_query(q,self.sqlite3con)
+    
+    def _checkdbcopyiscurrent(self,table):
+        if table !='_cached_dataset_lookups' and self._dbtable_exists(table):
+            datadate=_cached_dataset_lookups[_cached_dataset_lookups['Dataset']==table].iloc[0]['Date']
+            q="SELECT Date FROM dataset_date WHERE Dataset='{dataset}';".format(dataset=table)
+            dbdatadate=self.read_db(q).iloc[0]['Date']
+            return datadate==dbdatadate
+        return False
+    
+    def _updatedb(self,table=None, data=None):
+        if not self.sqlite3con or not isinstance(data,DataFrame) or table is None: return
+        con=self.sqlite3con
+        data.to_sql(con=con, name=table, if_exists='replace',index=False)
+        if table !='_cached_dataset_lookups' and table!='dataset_date':
+            datadate=_cached_dataset_lookups[_cached_dataset_lookups['Dataset']==table].iloc[0]['Date']
+            q="UPDATE dataset_date SET Date='{date}' WHERE Dataset='{dataset}';".format(date=datadate, dataset=table)
+            c = con.cursor()
+            c.execute(q)
+            con.commit()
+        
+    def _dbtable_exists(self,table=None):
+        if not self.sqlite3con or table is None: return False
+        q="SELECT name FROM sqlite_master WHERE type='table' AND name='{}'".format(table)
+        return True if len(self.read_db(q)) else False
+    
+    def cached(self):
+        tmp=self.search(string='')
+        return tmp[tmp['Dataset'].isin(_cached_datasets.keys())]
+
     
     def read(self):
         return self._read()
@@ -182,6 +258,7 @@ class NHSDigitalOrganisationDataServiceReader(_BaseReader):
         
         data = {}
         
+        #Get a list of datasets for a particular datatype
         if self.datasets is None and self.datatypes is not None:
             datasets = []
             for dt in self.datatypes:
@@ -189,15 +266,22 @@ class NHSDigitalOrganisationDataServiceReader(_BaseReader):
             self.datasets = [ds for ds in datasets if ds in dataset_codes ]
             
         for dataset in self.datasets:
+            #Use a pre-existing copy of the dataset if we have one
             if dataset in _cached_datasets:
-                data[dataset]= _cached_datasets[dataset]
+                data[dataset] = _cached_datasets[dataset]
                 continue
-            # Build URL for api call
+            elif self._dbtable_exists(dataset):
+                #if we have a recent copy, use it
+                if self._checkdbcopyiscurrent(dataset):
+                    data[dataset] = self.read_db(table=dataset)
+                    continue
+                
+            # Build URL for API call
             try:
                 url=_cached_dataset_lookups[_cached_dataset_lookups['Dataset']==dataset].iloc[0]['URL']
                 
                 #Should trap as a warning
-                if dataset not in jdata: return pd.DataFrame()
+                if dataset not in jdata: return DataFrame()
                 
                 names=jdata[dataset]['cols']
                 dates=jdata[dataset]['dates']
@@ -212,7 +296,7 @@ class NHSDigitalOrganisationDataServiceReader(_BaseReader):
                 dtypes={c:str for c in names
                                         if "phone" in c.lower() or " code" in c.lower() or "type" in c.lower()}
 
-                df = pd.read_csv(self.zipgrabberfile(url, '{}.csv'.format(dataset)),
+                df = read_csv(self.zipgrabberfile(url, '{}.csv'.format(dataset)),
                      header=None, names=None if names==[] else names, parse_dates=dates,
                      low_memory=False, encoding='Latin-1')
                 
@@ -221,11 +305,13 @@ class NHSDigitalOrganisationDataServiceReader(_BaseReader):
                 if codes is not None:
                     for col in codes:
                         df[col + ' Value']=df[col].astype(str).map(codes[col])
-                if index=='auto':
-                    index=[names[0]]
-                if index is not None: df=df.set_index(index)
+                #The db table writer ignores the index...
+                #if index=='auto':
+                #    index=[names[0]]
+                #if index is not None: df=df.set_index(index)
 
-                _cached_datasets[dataset]=df
+                if dataset not in _cached_datasets: _cached_datasets[dataset]=df
+                self._updatedb(dataset, df)
                 data[dataset]=df
 
             except ValueError as e:
@@ -243,8 +329,8 @@ class NHSDigitalOrganisationDataServiceReader(_BaseReader):
         else:
             msg = "No datasets returned data."
             raise ValueError(msg)
-            
-            
+        
+                   
 def download(dataset=None, datatype=None,
              errors='warn', **kwargs):
     """
@@ -272,6 +358,7 @@ def download(dataset=None, datatype=None,
 
 _cached_dataset_lookups = None
 _cached_datasets = {}
+_dbcon=None
 
 def search(string='GP', field='Dataset', case=False, **kwargs):
     """
@@ -300,3 +387,33 @@ def search(string='GP', field='Dataset', case=False, **kwargs):
 
     return NHSDigitalOrganisationDataServiceReader(**kwargs).search(string=string, field=field,
                                                                     case=case)
+def setdb(sqlite3db='default.sqlite',**kwargs):
+    '''
+    Enable a db.
+    '''
+    NHSDigitalOrganisationDataServiceReader(sqlite3db=sqlite3db, **kwargs).setdb()
+    
+def updatedb(tables="all",**kwargs):
+    """
+    Populate the SQLite3 database. This may take some time.
+    """
+    datasets=None
+    datatypes=None
+    if isinstance(tables, string_types):
+        if tables=='all':
+            datasets=dataset_codes
+        elif tables in dataset_codes: datasets = [tables]
+        elif tables in datatype_codes: datatypes = [tables]
+    elif isinstance(tables, list):
+        for table in tables:
+            if table in dataset_codes: datasets.append(table)
+            elif table in datatype_codes: datatypes.append(table)
+    download(dataset=datasets, datatype=datatypes,**kwargs)
+
+def availableDatasets(typ="offline", **kwargs):
+    if typ=="offline":
+        return NHSDigitalOrganisationDataServiceReader().read_db(q='SELECT * FROM dataset_date WHERE Date!="None"')
+    return NHSDigitalOrganisationDataServiceReader().cached()
+        
+def init(sqlite3db=None,**kwargs):
+     NHSDigitalOrganisationDataServiceReader(sqlite3db=sqlite3db, **kwargs).init()
