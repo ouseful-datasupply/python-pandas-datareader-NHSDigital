@@ -37,7 +37,10 @@ dataset_codes = ['epraccur', 'etrust', 'eccg', 'eccgsite', 'epcmem', 'epracmem',
 datatype_codes = ['gp-data', 'other-nhs', 'health-authorities',
                   'non-nhs', 'miscellaneous']
 
-jdata=json.load(open("nhsdigitalods.json"))
+import pkg_resources
+
+JSON_FILE = pkg_resources.resource_filename('pd_datareader_nhs', 'data/nhsdigitalods.json')
+jdata=json.load(open(JSON_FILE))
 
 
 class NHSDigitalOrganisationDataServiceReader(_BaseReader):
