@@ -16,4 +16,8 @@ setup(name='pd_datareader_nhs',
           'requests',
           'lxml'
       ],
+      entry_points='''
+        [console_scripts]
+        nhs_admin=pd_datareader_nhs.cli:cli
+    ''',
       zip_safe=False)

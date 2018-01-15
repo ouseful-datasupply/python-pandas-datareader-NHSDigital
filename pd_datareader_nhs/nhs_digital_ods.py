@@ -24,6 +24,18 @@ except ImportError:
 
 import json
 
+#Need unique column names
+#https://stackoverflow.com/a/2837551/454773
+def rename_duplicates( old ):
+    seen = {}
+    for x in old:
+        if x in seen:
+            seen[x] += 1
+            yield "%s_%d" % (x, seen[x])
+        else:
+            seen[x] = 0
+            yield x
+
 # This list of dataset codes was pulled from the NHS Digital Organisation
 # Data Service data downloads pages:
 # https://digital.nhs.uk/organisation-data-service/data-downloads
@@ -286,7 +298,7 @@ class NHSDigitalOrganisationDataServiceReader(_BaseReader):
                 #Should trap as a warning
                 if dataset not in jdata: return DataFrame()
                 
-                names=jdata[dataset]['cols']
+                names=list(rename_duplicates(jdata[dataset]['cols']))
                 dates=jdata[dataset]['dates']
                 codes=jdata[dataset]['codes']
                 index=jdata[dataset]['index']
