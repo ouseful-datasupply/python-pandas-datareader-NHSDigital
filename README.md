@@ -55,3 +55,20 @@ dd['epraccur']
 ```
 
 The downloader should be cacheing data as it is downloaded, which can add a considerable overhead. At the moment, the downloaded data is *not* persisted using local storage. 
+
+## Command Line Interface
+
+A CLI to the organisation data service download that downloads all ODS reference tables into a single SQLIte3 database.
+
+See the database running as a [datasette](https://github.com/simonw/datasette) at: [https://ousefulnhsdata.herokuapp.com/](https://ousefulnhsdata.herokuapp.com/)
+
+```
+Usage: nhs_admin [OPTIONS] COMMAN
+
+Commands: 
+  collect        Fresh collection of all NHS Organisation Data Service files       
+
+Options:
+  --dbname TEXT  SQLite database name (default: nhs_ods.db)
+  --help         Show this message and exit.
+```
