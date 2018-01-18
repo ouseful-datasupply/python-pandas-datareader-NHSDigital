@@ -4,9 +4,9 @@ Pandas data reader extensions to access NHS Digital datasets
 
 ## Usage
 
-Install using: `pip3 install --force-reinstall --upgrade --no-deps git+https://github.com/psychemedia/python-pandas-datareader-NHSDigital.git`
+Install using: `pip3 install --force-reinstall --upgrade --no-deps git+https://github.com/ouseful-datasupply/python-pandas-datareader-NHSDigital.git`
 
-See worked example notebook: https://github.com/psychemedia/python-pandas-datareader-NHSDigital/blob/master/docs/Testing%20-%20python-pandas-datareader-NHSDigital.ipynb
+See worked example notebook: https://github.com/ouseful-datasupply/python-pandas-datareader-NHSDigital/blob/master/docs/Testing%20-%20python-pandas-datareader-NHSDigital.ipynb
 
 
 Import using:
