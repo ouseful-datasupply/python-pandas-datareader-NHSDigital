@@ -63,7 +63,7 @@ A CLI to the organisation data service download that downloads all ODS reference
 See the database running as a [datasette](https://github.com/simonw/datasette) at: [https://ousefulnhsdata.herokuapp.com/](https://ousefulnhsdata.herokuapp.com/)
 
 ```
-Usage: nhs_admin [OPTIONS] COMMAN
+Usage: nhs_admin [OPTIONS] COMMAND
 
 Commands: 
   collect        Fresh collection of all NHS Organisation Data Service files       
@@ -72,3 +72,5 @@ Options:
   --dbname TEXT  SQLite database name (default: nhs_ods.db)
   --help         Show this message and exit.
 ```
+
+For example, to download everything: `nhs_admin collect`
