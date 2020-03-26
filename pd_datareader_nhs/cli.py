@@ -9,4 +9,4 @@ def cli(dbname,command):
 	click.echo('Using SQLite3 database: {}'.format(dbname))
 	if command == 'collect':
 		ods.init(sqlite3db=dbname)
-		ods.updatedb()
+		ods.updatedb(sqlite3db=dbname)
