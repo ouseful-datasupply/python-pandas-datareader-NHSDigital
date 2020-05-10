@@ -32,10 +32,9 @@ jobs:
         nhs_admin collect    
     - name: Commit and push
       run: |-
-        git diff
         git config --global user.email "nhs-admindata-bot@example.com"
         git config --global user.name "NHS-admindata-bot"
-        git diff --quiet || (git add nhs_ods.db && git commit -m "Updated NHS ODS db")
+        git add nhs_ods.db && git commit -m "Updated NHS ODS db"
         git push
     - name: Setup Node.js
       uses: actions/setup-node@v1
