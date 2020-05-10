@@ -1,6 +1,8 @@
 # python-pandas-datareader-NHSDigital
-Pandas data reader extensions to access NHS Digital datasets
+Pandas data reader extensions to access NHS Digital organisation data service datasets
 
+
+Data scraped weekly by a Github Action and published using `datasette` to https://nhs-ods.psychemedia.now.sh/
 
 ## Usage
 
