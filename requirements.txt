@@ -5,3 +5,5 @@ requests
 lxml
 
 datasette
+
+.
