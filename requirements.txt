@@ -1,0 +1,7 @@
+pandas
+numpy
+pandas_datareader
+requests
+lxml
+
+datasette
