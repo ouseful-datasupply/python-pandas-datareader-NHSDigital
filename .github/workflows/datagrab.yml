@@ -48,13 +48,4 @@ jobs:
         datasette publish now nhs_ods.db \
           --token $NOW_TOKEN \
           --project nhs-ods \
-          #--metadata metadata.yaml \
-          --install py-gfm \
-          --install datasette-render-markdown \
-          --install datasette-template-sql \
-          --install datasette-atom~=0.5 \
-          --install datasette-json-html \
-          --install beautifulsoup4 \
-          --plugins-dir plugins \
-          --template-dir templates \
           --public
