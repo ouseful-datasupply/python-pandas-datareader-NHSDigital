@@ -8,7 +8,7 @@ GitPython
 sqlite-utils
 py-gfm
 beautifulsoup4
-datasette~=0.40
+datasette
 datasette-render-markdown
 datasette-publish-now
 datasette-template-sql>=1.0
