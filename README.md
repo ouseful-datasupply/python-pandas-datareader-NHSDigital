@@ -13,7 +13,7 @@ See worked example notebook: https://github.com/ouseful-datasupply/python-pandas
 
 Import using:
 ```
-import pd_datareader_nhs.nhs_digital_ods as ods
+import ouseful_nhs_datasupply.nhs_digital_ods as ods
 ```
 
 Search for available datasets - this scrapes pages linked from the [NHS Digital Organisation Data Service *Data downloads* page](https://digital.nhs.uk/organisation-data-service/data-downloads) to build up a catalogue of available datasets.

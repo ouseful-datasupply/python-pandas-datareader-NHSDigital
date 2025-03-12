@@ -1,0 +1,1070 @@
+{
+  "epraccur":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Status Code",
+      "Organisation Sub-Type Code",
+      "Commissioner",
+      "Join Provider/Purchaser Date",
+      "Left Provider/Purchaser Date",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Provider/Purchaser",
+      "Null",
+      "Prescribing Setting",
+      "Null"
+    ],
+    "codes":{
+      "Status Code":{
+        "A":"Active",
+        "C":"Closed",
+        "D":"Dormant",
+        "P":"Proposed"
+      },
+      "Organisation Sub-Type Code":{
+        "B":"Allocated to a Provider/Purchaser Organisation",
+        "Z":"Not allocated to a Provider/Purchaser Organisation"
+      },
+      "Prescribing Setting":{
+        "0":"Other",
+        "1":"WIC Practice",
+        "2":"OOH Practice",
+        "3":"WIC + OOH Practice",
+        "4":"GP Practice",
+        "8":"Public Health Service",
+        "9":"Community Health Service",
+        "10":"Hospital Service",
+        "11":"Optometry Service",
+        "12":"Urgent & Emergency Care",
+        "13":"Hospice",
+        "14":"Care Home / Nursing Home",
+        "15":"Border Force",
+        "16":"Young Offender Institution",
+        "17":"Secure Training Centre",
+        "18":"Secure Children's Home",
+        "19":"Immigration Removal Centre",
+        "20":"Court",
+        "21":"Police Custody",
+        "22":"Sexual Assault Referral Centre (SARC)",
+        "24":"Other – Justice Estate",
+        "25":"Prison"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "etrust":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "GOR Code",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "eccg":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Organisation Sub-Type Code",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+      "Organisation Sub-Type Code":{
+        "H CB":"Commissioning hub",
+        "C":"Standard CCG"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "eccgsite":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Null",
+      "Parent Organisation Code",
+      "Join Parent Date",
+      "Left Parent Date",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "epcmem":{
+    "cols":[
+      "Organisation Code",
+      "Parent Organisation Code",
+      "Parent Organisation Type",
+      "Join Parent Date",
+      "Left Parent Date",
+      "Amended Record Indicator"
+    ],
+    "codes":{
+      "Parent Organisation Type":{
+        "W":"Primary Care Organisation"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "epracmem":{
+    "cols":[
+      "Practitioner Code",
+      "Parent Organisation Code",
+      "Parent Organisation Type",
+      "Join Parent Date",
+      "Left Parent Date",
+      "Amended Record Indicator"
+    ],
+    "codes":{
+
+    },
+    "index":[
+      "Practitioner Code"
+    ],
+    "dates":"auto"
+  },
+  "egdpprac":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Status Code",
+      "Organisation Sub-Type Code",
+      "Parent Organisation Code",
+      "Join Parent Date",
+      "Left Parent Date",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+      "Status Code":{
+        "A":"Active",
+        "C":"Closed",
+        "D":"Dormant",
+        "P":"Proposed"
+      },
+      "Organisation Sub-Type Code":{
+        "D":"NHS and Private Dental Practice",
+        "P":"Private Only Dental Practice"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "egpcur":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Status Code",
+      "Organisation Sub-Type Code",
+      "Parent Organisation Code",
+      "Join Parent Date",
+      "Left Parent Date",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Current Care Organisation",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+      "Status Code":{
+        "A":"Active",
+        "B":"Retired",
+        "C":"Closed",
+        "P":"Proposed"
+      },
+      "Organisation Sub-Type Code":{
+        "P":"Principal/Senior GP at practice",
+        "O":"Other GP in practice (not Principal/Senior GP)"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "egparc":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Status Code",
+      "Organisation Sub-Type Code",
+      "Parent Organisation Code",
+      "Join Parent Date",
+      "Left Parent Date",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+      "Status Code":{
+        "A":"Active",
+        "C":"Closed",
+        "P":"Proposed"
+      },
+      "Organisation Sub-Type Code":{
+        "P":"Principal/Senior GP at practice",
+        "O":"Other GP in practice (not Principal/Senior GP)"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "epracarc":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Status Code",
+      "Organisation Sub-Type Code",
+      "Parent Organisation Code",
+      "Join Parent Date",
+      "Left Parent Date",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Practice Type",
+      "Null"
+    ],
+    "codes":{
+      "Status Code":{
+        "A":"Active",
+        "C":"Closed",
+        "D":"Dormant",
+        "P":"Proposed"
+      },
+      "Organisation Sub-Type Code":{
+        "B":"Allocated to a PCT or Care Trust",
+        "Z":"Not allocated to a PCT or Care Trust"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "ehospice":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Organisation Sub-Type Code",
+      "Null",
+      "Null",
+      "Null",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+      "Organisation Sub-Type Code":{
+        "H":"Hospice"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "epharmacyhq":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "edispensary":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Status Code",
+      "Organisation Sub-Type Code",
+      "Parent Organisation Code",
+      "Join Parent Date",
+      "Left Parent Date",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Current Care Organisation",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+      "Status Code":{
+        "A":"Active",
+        "C":"Closed",
+        "P":"Proposed"
+      },
+      "Organisation Sub-Type Code":{
+        "1":"Pharmacy",
+        "2":"Appliance Contractor",
+        "3":"Oxygen concentrator supplier"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "enurse":{
+    "cols":[
+      "Nurse Type",
+      "Parent Organisation Code",
+      "Nurse PIN",
+      "Open Date",
+      "Close Date",
+      "Title",
+      "Initials",
+      "Surname",
+      "Address1",
+      "Address2",
+      "Address3",
+      "Address4",
+      "Address5",
+      "Postcode",
+      "Telephone Number",
+      "Senior Partner Name",
+      "Current Care Organisation Code",
+      "Name",
+      "Name manipulation indicator",
+      "Qualification indicator"
+    ],
+    "codes":{
+      "Nurse Type":{
+        "PN":"nurse employed by a practice",
+        "CN":"nurse employed by a Community NHS Trust"
+      },
+      "Qualification indicator":{
+        "1":"District Nurse/Health Visitor",
+        "2":"Extended Formulary nurse prescriber / Nurse supplementary prescriber"
+      }
+    },
+    "index":[
+      "Nurse PIN"
+    ],
+    "dates":"auto"
+  },
+  "epcdp":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Organisation Sub-Type Code",
+      "Parent Organisation Code",
+      "Join Parent Date",
+      "Left Parent Date",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+      "Organisation Sub-Type Code":{
+        "1":"Private Doctor",
+        "2":"Private Nurse",
+        "3":"Private Pharmacist",
+        "4":"Private Optometrist",
+        "5":"Private Physiotherapist",
+        "6":"Private Radiographe",
+        "7":"Private Podiatrist"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "eabeydispgp":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "Null",
+      "Null",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Organisation Sub-Type Code",
+      "Parent Organisation Code",
+      "Join Parent Date",
+      "Left Parent Date",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Current Care Organisation",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+      "Organisation Sub-Type Code":{
+        "A":"Abeyance",
+        "D":"Dispersal"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "ecarehomehq":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "Null",
+      "Null",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Country"
+    ],
+    "codes":{
+      "Country":{
+        "1":"England",
+        "2":"Scotland",
+        "3":"Wales",
+        "4":"Northern Ireland",
+        "5":"Isle of Man"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "ecarehomesite":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Null",
+      "Parent Organisation Code",
+      "Join Parent Date",
+      "Left Parent Date",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Current Care Organisation",
+      "Null",
+      "Null",
+      "Country"
+    ],
+    "codes":{
+      "Country":{
+        "1":"England",
+        "2":"Scotland",
+        "3":"Wales",
+        "4":"Northern Ireland",
+        "5":"Isle of Man",
+        "10":"Channel Islands"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "ecarehomesucc":{
+    "cols":[
+      "Organisation Code",
+      "Successor Organisation Code",
+      "Successor Reason Code",
+      "Succession Effective Date",
+      "Succession Indicator"
+    ],
+    "codes":{
+      "Successor Reason Code":{
+        "F":"FMR code change",
+        "O":"Org. type change",
+        "R":"Reconfiguration"
+      },
+      "Succession Indicator":{
+        "None":"No further succession",
+        "F":"Further succession",
+        "X":"Closed succession"
+      }
+    },
+    "index":[
+      "Organisation Code",
+      "Successor Organisation Code"
+    ],
+    "dates":"auto"
+  },
+  "ephp":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "ephpsite":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Organisation Sub-Type Code",
+      "Parent Organisation Code",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+      "Organisation Sub-Type Code":{
+        "A":"Social Enterprise",
+        "M":"Treatment Centre",
+        "E":"Independent Sector Hospital",
+        "R":"Registered under Part 2 of the Care Standards Act 2000"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "enonnhs":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Organisation Sub-Type Code",
+      "Null",
+      "Null",
+      "Null",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+      "Organisation Sub-Type Code":{
+        "R":"Registered Non-NHS Provider",
+        "N":"Non-Registered Non-NHS Provider"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "eprison":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "Null",
+      "Null",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "eschools":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Null",
+      "Local Authority",
+      "Null",
+      "Null",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Current Care Organisation",
+      "Type of Establishment",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+      "Type of Establishment":{
+        "01":"COMMUNITY SCHOOL",
+        "02":"VOLUNTARY AIDED SCHOOL",
+        "03":"VOLUNTARY CONTROLLED SCHOOL",
+        "05":"FOUNDATION SCHOOL",
+        "06":"CITY TECHNOLOGY COLLEGE",
+        "07":"COMMUNITY SPECIAL SCHOOL",
+        "08":"NON-MAINTAINED SPECIAL SCHOOL",
+        "1":"COMMUNITY SCHOOL",
+        "2":"VOLUNTARY AIDED SCHOOL",
+        "3":"VOLUNTARY CONTROLLED SCHOOL",
+        "5":"FOUNDATION SCHOOL",
+        "6":"CITY TECHNOLOGY COLLEGE",
+        "7":"COMMUNITY SPECIAL SCHOOL",
+        "8":"NON-MAINTAINED SPECIAL SCHOOL",
+        "10":"OTHER INDEPENDENT SPECIAL SCHOOL",
+        "11":"OTHER INDEPENDENT SCHOOL",
+        "12":"FOUNDATION SPECIAL SCHOOL",
+        "14":"PUPIL REFERRAL UNIT",
+        "15":"LA NURSERY SCHOOL",
+        "18":"FURTHER EDUCATION",
+        "24":"SECURE UNITS",
+        "25":"OFFSHORE SCHOOLS",
+        "26":"SERVICE CHILDRENS EDUCATION",
+        "27":"MISCELLANEOUS",
+        "28":"ACADEMY SPONSOR LED",
+        "29":"HIGHER EDUCATION INSTITUTIONS",
+        "30":"WELSH ESTABLISHMENT",
+        "31":"SIXTH FORM CENTRES",
+        "32":"SPECIAL POST 16 INSTITUTION",
+        "33":"ACADEMY SPECIAL SPONSOR LED",
+        "34":"ACADEMY CONVERTER",
+        "35":"FREE SCHOOLS",
+        "36":"FREE SCHOOLS SPECIAL",
+        "37":"BRITISH SCHOOLS OVERSEAS",
+        "38":"FREE SCHOOLS - ALTERNATIVE PROVISION",
+        "39":"FREE SCHOOLS - 16-19",
+        "40":"UNIVERSITY TECHNICAL COLLEGE",
+        "41":"STUDIO SCHOOLS",
+        "42":"ACADEMY ALTERNATIVE PROVISION CONVERTER",
+        "43":"ACADEMY ALTERNATIVE PROVISION SPONSOR LED",
+        "44":"ACADEMY SPECIAL CONVERTER",
+        "45":"ACADEMY 16-19 CONVERTER",
+        "46":"ACADEMY 16-19 SPONSOR LED",
+        "47":"CHILDREN'S CENTRE",
+        "48":"CHILDREN'S CENTRE LINKED SITE",
+        "56":"INSTITUTION FUNDED BY OTHER GOVERNMENT DEPARTMENT"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "ejustice":{
+    "cols":[
+      "Organisation Code",
+      "Justice Estate Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Residency Indicator",
+      "Parent Organisation Code",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "Null",
+      "Null",
+      "Primary Role",
+      "Null"
+    ],
+    "codes":{
+      "Residency Indicator":{
+        "RI":"Residential Institution",
+        "RJ":"Non-Residential Institution"
+      },
+      "Primary Role":{
+        "PN":"Prison",
+        "JA":"Young Offender Institution",
+        "JB":"Secure Training Centre",
+        "JC":"Secure Children's Home",
+        "JD":"Immigration Removal Centre",
+        "JE":"Constabulary",
+        "JF":"Police Custody Suite",
+        "JG":"Courts",
+        "JH":"Sexual Assault Referral Centre"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  },
+  "ecare":{
+    "cols":[
+      "Organisation Code",
+      "Name",
+      "National Grouping",
+      "High Level Health Geography",
+      "Address Line 1",
+      "Address Line 2",
+      "Address Line 3",
+      "Address Line 4",
+      "Address Line 5",
+      "Postcode",
+      "Open Date",
+      "Close Date",
+      "Null",
+      "Organisation Sub-Type Code",
+      "Null",
+      "Null",
+      "Null",
+      "Contact Telephone Number",
+      "Null",
+      "Null",
+      "Null",
+      "Amended Record Indicator",
+      "Null",
+      "GOR Code",
+      "Null",
+      "Null",
+      "Null"
+    ],
+    "codes":{
+      "Organisation Sub-Type Code":{
+        "P":"PCT Derived",
+        "T":"NHS Trust Derived"
+      }
+    },
+    "index":"auto",
+    "dates":"auto"
+  }
+}
