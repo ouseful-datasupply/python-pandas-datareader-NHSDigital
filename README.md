@@ -3,6 +3,9 @@ Pandas data reader extensions to access NHS Digital organisation data service da
 
 Data scraped weekly by a Github Action and published using `datasette` to https://nhs-ods.psychemedia.now.sh/
 
+Example db: 
+https://lite.datasette.io/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fouseful-datasupply%2Fpython-pandas-datareader-NHSDigital%2Fmaster%2Fnhs_ods.db%3Fraw%3Dtrue#/
+
 ## Usage
 
 PyPi: `pip install ouseful_nhs_datasupply`
