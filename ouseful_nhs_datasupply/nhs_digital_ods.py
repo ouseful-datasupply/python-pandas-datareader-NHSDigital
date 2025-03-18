@@ -48,9 +48,12 @@ def rename_duplicates(old):
 
 dataset_codes = [
     "epraccur",
-    "etrust",
     "eccg",
     "eccgsite",
+    "eschools",
+    "ejustice",
+    "ephpsite",
+    "enonnhs",
     "epcmem",
     "epracmem",
     "egdpprac",
@@ -65,13 +68,7 @@ dataset_codes = [
     "eabeydispgp",
     "ecarehomehq",
     "ecarehomesite",
-    "ecarehomesucc",
     "ephp",
-    "ephpsite",
-    "enonnhs",
-    "eschools",
-    "ejustice",
-    "ecare",
 ]
 datatype_codes = [
     "gp-and-gp-practice-related-data",
@@ -191,7 +188,7 @@ class NHSDigitalOrganisationDataServiceReader:
         self._sourceDatasets(False)
 
     def init(self):
-        pass
+        self._setdb()
 
     def _setdb(self):
         if self.sqlite3con and not self._dbtable_exists("dataset_date"):
@@ -348,7 +345,7 @@ class NHSDigitalOrganisationDataServiceReader:
             # print("Not cacheing data in db...")
             return
         con = self.sqlite3con
-        #print("Cacheing data in db")
+        # print("Cacheing data in db")
         data.to_sql(con=con, name=table, if_exists="replace", index=False)
         if table != "_cached_dataset_lookups" and table != "dataset_date":
             datadate = self._cached_dataset_lookups[
@@ -494,6 +491,7 @@ def download(dataset=None, datatype=None, errors="warn", sqlite3db=None, **kwarg
     ``pandas`` DataFrame with columns: country, iso_code, year,
     indicator value.
     """
+    print(f"Trying datatset: {dataset}, datatype: {dataset} ")
     return NHSDigitalOrganisationDataServiceReader(
         datasets=dataset, datatypes=datatype, sqlite3db=sqlite3db, **kwargs
     ).read()

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="ouseful_nhs_datasupply",
-    version="0.3.0",
+    version="0.3.1",
     description="pandas data reader extensions for NHS Digital",
     url="https://github.com/psychemedia/python-pandas-datareader-NHSDigital",
     author="Tony Hirst",
