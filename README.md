@@ -6,6 +6,8 @@ Data scraped weekly by a Github Action and published using `datasette` to https:
 Example db: 
 https://lite.datasette.io/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fouseful-datasupply%2Fpython-pandas-datareader-NHSDigital%2Fmaster%2Fnhs_ods.db%3Fraw%3Dtrue#/
 
+Example IW postcode glob query: https://lite.datasette.io/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fouseful-datasupply%2Fpython-pandas-datareader-NHSDigital%2Fmaster%2Fnhs_ods.db%3Fraw%3Dtrue#/nhs_ods/edispensary?_filter_column_1=Postcode&_filter_op_1=glob&_filter_value_1=PO3%5B0-9%5D*&_filter_column=&_filter_op=exact&_filter_value=&_sort=rowid
+
 ## Usage
 
 PyPi: `pip install ouseful_nhs_datasupply`
